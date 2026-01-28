@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title> ANIS SYAZLIN </title>
+    <link rel="stylesheet" href="STYLE.css">
+</head>
+
+<body>
+
+<header>
+
+    
+    <nav>
+        <a href="HOME.html">HOME</a>
+        <a href="ABOUT ME.html">ABOUT ME</a>
+        <a href="EDUCATION.html">EDUCATION</a>
+        <a href="EXPERIENCE AND SKILL.html">EXPERIENCE AND SKILL</a>
+        <a href="FAMILY.html">FAMILY</a>
+        <a href="GALLERY.html">GALLERY</a>
+        <a href="CONTACT.html">CONTACT</a>
+    </nav>
+    
+    <div class="logo" style="text-align: left; margin-top: 40px; font-weight: bold;">
+        NUR ANIS SYAZLIN
+    </div>
+    
+</header>
+
+
+<div id="clock" style="font-size: 30px; color: maroon; font-weight: bold; text-align: right; padding-center: 30px; margin-top: 10px;"></div>
+
+<div class="home-box">
+    <div class="home-text">
+        <h1 class="welcome"> Bonjour! I am Anis Syazlin :3 </h1>
+        <p class="intro"> Welcome to my memories space! </p>
+    </div>
+	
+    <div class="home-img">
+        <img src="images/anis sem 5.jpg" alt="Anis">
+    </div>
+</div>
+    
+<footer>
+    <p> © 2025 anis munye. All Rights Reserved.</p>
+</footer>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        var welcomeText = document.querySelector(".welcome");
+        var message = welcomeText.textContent;
+        welcomeText.textContent = ""; 
+
+        var index = 0;
+        var typingSpeed = 70; 
+
+        var typeEffect = setInterval(function () {
+            if (index < message.length) {
+                welcomeText.textContent += message.charAt(index);
+                index++;
+            } else {
+                clearInterval(typeEffect); 
+            }
+        }, typingSpeed);
+
+        
+        var image = document.querySelector(".home-img img");
+        var imgPosition = 0;
+        var movementDirection = 1;
+
+        setInterval(function () {
+            imgPosition += movementDirection * 0.5; 
+            if (imgPosition > 5 || imgPosition < -5) {
+                movementDirection *= -1; 
+            }
+            image.style.transform = "translateY(" + imgPosition + "px)";
+        }, 30);
+
+      
+        function updateClock() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            
+			
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        
+        setInterval(updateClock, 1000);
+        updateClock(); 
+    });
+</script>
+
+
+</body>
+</html>
+
